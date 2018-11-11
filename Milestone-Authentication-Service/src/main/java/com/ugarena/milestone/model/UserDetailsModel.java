@@ -37,13 +37,5 @@ public class UserDetailsModel {
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	@Override
-	public String toString() {
-		return "UserDetailsModel [firstName=" + firstName + ", lastname=" + lastname + ", emailId=" + emailId
-				+ ", password=" + password + ", phoneNumber=" + phoneNumber + "]";
-	}
-	
-	
-	
 	
 }

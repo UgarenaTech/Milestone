@@ -22,11 +22,10 @@ public class AuthenticationController {
 	
 	}
 	
-	@PostMapping("/signup")	
-public String signUp(@RequestBody UserDetailsModel userDetailsModel){
-	System.out.println(userDetailsModel);
-	return "sign up done";
-	
-}
+	@PostMapping("/signup")
+	public String signUp(@RequestBody UserDetailsModel userDetailsModel) {
+		return "sign up done";
+
+	}
 	
 }
