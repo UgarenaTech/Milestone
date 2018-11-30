@@ -3,12 +3,15 @@ package com.ugarena.milestone.authentication.entities;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="userrole")
 public class UserRole {
 
 	
@@ -18,9 +21,24 @@ public class UserRole {
 	private Date createdDate;
 	private String role;
 	private boolean permissionGranted;
-	@OneToMany(mappedBy="userRole")
+	@DBRef(db="userdetails")
 	private List<UserDetails> userDetailsList;
 	
+	public UserRole() {
+		
+	}
+	
+	@PersistenceConstructor
+	public UserRole(long roleId, Date createdDate, String role, boolean permissionGranted,
+			List<UserDetails> userDetailsList) {
+		super();
+		this.roleId = roleId;
+		this.createdDate = createdDate;
+		this.role = role;
+		this.permissionGranted = permissionGranted;
+		this.userDetailsList = userDetailsList;
+	}
+
 	public long getId() {
 		return roleId;
 	}

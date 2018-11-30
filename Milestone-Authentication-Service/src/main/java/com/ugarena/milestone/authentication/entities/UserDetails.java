@@ -4,9 +4,10 @@ import java.util.Date;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+@Document(collection="userdetails")
 public class UserDetails {
 
 	@Id
@@ -21,8 +22,26 @@ public class UserDetails {
 	private Date updatedDate;
 	private String updatedBy;
 	private Date passUpdatedDate;
-	@ManyToOne
-	@JoinColumn(name="roleId")
+	
+	public UserDetails() {
+	}
+	
+	@PersistenceConstructor
+	public UserDetails(long userId, String ugarenaId, String name, String emailId, String password, String prevPassword,
+			Date createdDate, Date updatedDate, String updatedBy, Date passUpdatedDate, UserRole userRole) {
+		super();
+		this.userId = userId;
+		this.ugarenaId = ugarenaId;
+		this.name = name;
+		this.emailId = emailId;
+		this.password = password;
+		this.prevPassword = prevPassword;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+		this.updatedBy = updatedBy;
+		this.passUpdatedDate = passUpdatedDate;
+		this.userRole = userRole;
+	}
 	private UserRole userRole;
 	
 	public long getUserId() {
