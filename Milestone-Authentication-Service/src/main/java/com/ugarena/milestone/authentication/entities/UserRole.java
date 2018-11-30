@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -17,7 +16,7 @@ public class UserRole {
 	
 	@Id
 	@GeneratedValue
-	private long roleId;
+	private Long roleId;
 	private Date createdDate;
 	private String role;
 	private boolean permissionGranted;
@@ -29,7 +28,7 @@ public class UserRole {
 	}
 	
 	@PersistenceConstructor
-	public UserRole(long roleId, Date createdDate, String role, boolean permissionGranted,
+	public UserRole(Long roleId, Date createdDate, String role, boolean permissionGranted,
 			List<UserDetails> userDetailsList) {
 		super();
 		this.roleId = roleId;
@@ -39,10 +38,10 @@ public class UserRole {
 		this.userDetailsList = userDetailsList;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return roleId;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.roleId = id;
 	}
 	public Date getCreatedDate() {
