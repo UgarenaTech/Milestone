@@ -2,14 +2,12 @@ package com.ugarena.milestone.authentication.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection="usergamereference")
+@Entity
 public class UserGameReference {
 
 	@Id
@@ -19,25 +17,9 @@ public class UserGameReference {
 	private String officialGameId;
 	private Date createdDate;
 	private Date updatedDate;
-	@DBRef(db="gamedetails")
+	@OneToMany(mappedBy="userGameReference")
 	private GameDetails gameDetails;
 	private long gameId;
-	
-	public UserGameReference() {
-	}
-
-	@PersistenceConstructor
-	public UserGameReference(long ugrId, String ugarenaId, String officialGameId, Date createdDate, Date updatedDate,
-			GameDetails gameDetails, long gameId) {
-		super();
-		this.ugrId = ugrId;
-		this.ugarenaId = ugarenaId;
-		this.officialGameId = officialGameId;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.gameDetails = gameDetails;
-		this.gameId = gameId;
-	}
 	
 	public long getUgrId() {
 		return ugrId;
