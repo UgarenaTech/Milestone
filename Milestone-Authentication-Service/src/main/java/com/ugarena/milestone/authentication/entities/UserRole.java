@@ -14,17 +14,17 @@ public class UserRole {
 	
 	@Id
 	@GeneratedValue
-	private long roleId;
+	private Long roleId;
 	private Date createdDate;
 	private String role;
 	private boolean permissionGranted;
 	@OneToMany(mappedBy="userRole")
 	private List<UserDetails> userDetailsList;
-	
-	public long getId() {
+
+	public Long getId() {
 		return roleId;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.roleId = id;
 	}
 	public Date getCreatedDate() {
